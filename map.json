@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Line drawn between airports in the U.S. simulating a flight itinerary",
+  "width": 1200,
+  "height": 800,
+  "title": "Top 20 CA wildfires",
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "projection": {
+        "type": "albersUsa"
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#eee",
+        "stroke": "white"
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/TianyuNiu213/FIT3179-W9_homework/main/top_20_CA_wildfires.csv"
+      },
+      "projection": {
+        "type": "albersUsa"
+      },
+      "mark": "circle",
+      "encoding": {
+        "longitude": {
+          "field": "long",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lan",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "acres",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "deaths",
+          "type": "quantitative"
+        }
+      }
+    }
+  ]
+}
