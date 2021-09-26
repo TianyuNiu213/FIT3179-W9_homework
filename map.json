@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Shows the top 20 wildfires in the United States",
+  "width": 1200,
+  "height": 800,
+  "title": "Top 20 USA wildfires",
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/TianyuNiu213/FIT3179-W9_homework/main/counties-10m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "projection": {
+        "type": "albersUsa"
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#eee",
+        "stroke": "white"
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/TianyuNiu213/FIT3179-W9_homework/main/top_20_USA_wildfires.csv"
+      },
+      "projection": {
+        "type": "albersUsa"
+      },
+      "mark": {"type":"circle","tooltip": {"content": "data"}},
+      
+      "encoding": {
+        "longitude": {
+          "field": "long",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lan",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "acres",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "deaths",
+          "type": "quantitative"
+        }
+      }
+    }
+  ]
+}
